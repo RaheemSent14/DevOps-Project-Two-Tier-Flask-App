@@ -1,4 +1,8 @@
 import os
+from dotenv import load_dotenv
+load_dotenv()
+
+import os
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from flask_mysqldb import MySQL
 
@@ -44,4 +48,9 @@ def submit():
 
 if __name__ == '__main__':
     init_db()
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    
+    app.run(
+    host=os.getenv('APP_HOST', '0.0.0.0'),
+    port=int(os.getenv('APP_PORT', 5000)),
+    debug=os.getenv('FLASK_DEBUG', 'False') == 'True'
+)
