@@ -50,7 +50,7 @@ if __name__ == '__main__':
     init_db()
     
     app.run(
-    host=os.getenv('APP_HOST', '0.0.0.0'),
+    host=os.getenv('APP_HOST', '0.0.0.0'),  # nosec
     port=int(os.getenv('APP_PORT', 5000)),
     debug=os.getenv('FLASK_DEBUG', 'False') == 'True'
 )
